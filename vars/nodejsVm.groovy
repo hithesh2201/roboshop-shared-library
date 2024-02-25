@@ -93,13 +93,7 @@ def call(Map configMap){
                 }
             }
             steps {
-                sh"""
-                echo "$pwd"
-                """
-
-
                 script {
-                    echo "$pwd"
                     build job: 'catalogue-deploy',parameters: [
                         // Pass parameters to the downstream job
                         string(name: 'packageversion', value: "$packageversion"),
