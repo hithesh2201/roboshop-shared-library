@@ -93,6 +93,10 @@ def call(Map configMap){
                 }
             }
             steps {
+
+                sh"""
+                cd ..
+                """
                 script {
                     build job: 'catalogue-deploy',parameters: [
                         // Pass parameters to the downstream job
