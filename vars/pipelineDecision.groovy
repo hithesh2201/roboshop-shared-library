@@ -3,7 +3,7 @@
 def decidePipeline(Map configMap){
     application = configMap.get("application")
     switch(application) {
-        case 'nodejsvM':
+        case 'nodejsVm':
             nodejsVM(configMap)
             break
         case 'javaVM':
