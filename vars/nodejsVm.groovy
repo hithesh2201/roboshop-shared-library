@@ -57,7 +57,7 @@ def call(Map configMap){
             steps {
                 sh """
                     ls -ltr
-                    zip -q -r '${configMap.component}.zip' . -x "*.zip" -x ".git/*"
+                    zip -q -r "${configMap.component}.zip" . -x "*.zip" -x ".git/*"
                     ls -ltr 
                 """
             }
@@ -72,12 +72,12 @@ def call(Map configMap){
                         nexusUrl: "$nexusURL",
                         groupId: 'com.roboshop',
                         version: "$packageversion",
-                        repository: ${configMap.component},
+                        repository: "${configMap.component}",
                         credentialsId: 'nexus-auth',
                         artifacts: [
-                            [artifactId: ${configMap.component},
+                            [artifactId: "${configMap.component}",
                              classifier: '',
-                             file: ${configMap.component}.zip,
+                             file: "${configMap.component}.zip",
                              type: 'zip']
                         ]
                     )
@@ -94,7 +94,7 @@ def call(Map configMap){
             }
             steps {
                 script {
-                    build job: '../${configMap.component}-deploy',parameters: [
+                    build job: ""../${configMap.component}-deploy",parameters: [
                         // Pass parameters to the downstream job
                         string(name: 'packageversion', value: "$packageversion"),
                         // Add more parameters as needed
