@@ -94,7 +94,7 @@ def call(Map configMap){
             }
             steps {
                 script {
-                    build job: ""../${configMap.component}-deploy",parameters: [
+                    build job: "../${configMap.component}-deploy",parameters: [
                         // Pass parameters to the downstream job
                         string(name: 'packageversion', value: "$packageversion"),
                         // Add more parameters as needed
