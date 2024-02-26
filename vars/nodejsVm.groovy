@@ -72,12 +72,12 @@ def call(Map configMap){
                         nexusUrl: "$nexusURL",
                         groupId: 'com.roboshop',
                         version: "$packageversion",
-                        repository: '${configMap.component}',
+                        repository: ${configMap.component},
                         credentialsId: 'nexus-auth',
                         artifacts: [
-                            [artifactId: '${configMap.component}',
+                            [artifactId: ${configMap.component},
                              classifier: '',
-                             file: '${configMap.component}.zip',
+                             file: ${configMap.component}.zip,
                              type: 'zip']
                         ]
                     )
